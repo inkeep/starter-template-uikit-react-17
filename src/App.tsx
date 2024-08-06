@@ -1,12 +1,14 @@
-import './App.css'
+import "./App.css";
+import { EmbeddedChat } from "./EmbeddedChat";
+import { ChatButtonSSR } from "./ChatButtonSSR";
 
 function App() {
-
   return (
     <>
-      App
+      <EmbeddedChat />
+      <ChatButtonSSR />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -2,15 +2,15 @@ import { useEffect, useRef } from "react";
 import * as inkeepJS from "@inkeep/uikit-js";
 import { inkeepProps } from "./inkeepSettings";
 
-export const EmbeddedChat = () => {
-  const embeddedChatRef = useRef<any>(null);
+export const SearchBar = () => {
+  const SearchBarRef = useRef<any>(null);
 
   useEffect(() => {
     const inkeep = inkeepJS.Inkeep(inkeepProps.baseSettings);
 
-    embeddedChatRef.current = inkeep.embed({
-      componentType: "EmbeddedChat",
-      targetElement: "#embedded-chat-target",
+    SearchBarRef.current = inkeep.embed({
+      componentType: "SearchBar",
+      targetElement: "#search-bar-target",
       properties: {
         ...inkeepProps,
         // optional -- for syncing UI color mode
@@ -25,9 +25,5 @@ export const EmbeddedChat = () => {
     });
   }, []);
 
-  return (
-    <div className="ikp-wrapper">
-      <div id="embedded-chat-target" className="ikp-embedded-chat-wrapper" />
-    </div>
-  );
+  return <div id="search-bar-target" />;
 };

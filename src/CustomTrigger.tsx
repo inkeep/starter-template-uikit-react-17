@@ -1,16 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as inkeepJS from "@inkeep/uikit-js";
 import { inkeepProps } from "./inkeepSettings";
 
-export const EmbeddedChat = () => {
-  const embeddedChatRef = useRef<any>(null);
+export const CustomTrigger = () => {
+  const CustomTriggerRef = useRef<any>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const inkeep = inkeepJS.Inkeep(inkeepProps.baseSettings);
 
-    embeddedChatRef.current = inkeep.embed({
-      componentType: "EmbeddedChat",
-      targetElement: "#embedded-chat-target",
+    CustomTriggerRef.current = inkeep.embed({
+      componentType: "CustomTrigger",
       properties: {
         ...inkeepProps,
         // optional -- for syncing UI color mode
@@ -21,13 +21,23 @@ export const EmbeddedChat = () => {
         //   },
         //   colorModeAttribute: "class",
         // },
+        isOpen,
+        onClose: () => {
+          setIsOpen(false);
+        },
       },
     });
   }, []);
 
+  useEffect(() => {
+    if (CustomTriggerRef.current) {
+      CustomTriggerRef.current.render({ isOpen });
+    }
+  }, [isOpen]);
+
   return (
-    <div className="ikp-wrapper">
-      <div id="embedded-chat-target" className="ikp-embedded-chat-wrapper" />
-    </div>
+    <button type="button" onClick={() => setIsOpen(true)}>
+      Ask AI
+    </button>
   );
 };

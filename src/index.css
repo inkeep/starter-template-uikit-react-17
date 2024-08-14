@@ -67,12 +67,21 @@ button:focus-visible {
   }
 }
 
+.ikp-components-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .ikp-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 16px);
+  height: 100%;
   min-width: 0px;
+  min-height: 0px;
+  padding-block: 48px;
+  max-height: 100%;
 }
 
 .ikp-embedded-chat-wrapper {
@@ -82,4 +91,13 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   min-width: 0px;
+  max-width: 750px;
+}
+
+.ikp-header-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 48px;
+  max-width: 750px;
 }

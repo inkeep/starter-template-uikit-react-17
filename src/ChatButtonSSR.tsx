@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { inkeepProps } from "./inkeepSettings";
 
 export const ChatButtonSSR = () => {
-  const chatButtonRef = useRef(null);
+  const chatButtonRef = useRef<any>(null);
 
   useEffect(() => {
     const loadInkeepEmbed = async () => {
